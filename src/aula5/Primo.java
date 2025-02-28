@@ -11,7 +11,10 @@ public class Primo {
         System.out.println("Dgiita um numero");
         numero = sc.nextInt();
 
-        if (numero < 2) {
+        if (numero == 1) {
+            System.out.println("primo");
+        }
+        else if (numero < 2) {
             System.out.println("n primo");
         } else {
             boolean primo = true;
