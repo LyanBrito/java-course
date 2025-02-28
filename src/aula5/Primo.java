@@ -6,30 +6,32 @@ public class Primo {
 
     public static void main(String[] args) {
         int numero;
+        String S;
+        boolean continuar;
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Dgiita um numero");
-        numero = sc.nextInt();
+        do {
+            System.out.println("Digita um numero (aperte S para sair)");
+            numero = sc.nextInt();
 
-        if (numero == 1) {
-            System.out.println("primo");
-        }
-        else if (numero < 2) {
-            System.out.println("n primo");
-        } else {
-            boolean primo = true;
-            for (int i = 2; i <= Math.sqrt(numero); i++) {
-                if (numero % i == 0) {
-                    primo = false;
-                    break;
-                }
-            } if (primo) {
+            if (numero == 1) {
                 System.out.println("primo");
-            } else {
+            } else if (numero < 2) {
                 System.out.println("n primo");
-            }
-        }
-//        sem for
+            } else {
+                boolean primo = true;
+                for (int i = 2; i <= Math.sqrt(numero); i++) {
+                    if (numero % i == 0) {
+                        primo = false;
+                        break;
+                    }
+                }
+                if (primo) {
+                    System.out.println("primo");
+                } else {
+                    System.out.println("n primo");
+                }
+//        sem for()
 //        if (numero == 2 || numero == 3 || numero == 5 || numero == 7) {
 //            System.out.println("Primo");
 //        } else if (numero % 2 == 0 || numero % 3 == 0 || numero % 5 == 0 || numero % 7 == 0) {
@@ -37,6 +39,17 @@ public class Primo {
 //        } else {
 //            System.out.println("Primo");
 //        }
-    }
+
+            }
+            System.out.println("Digite S para continuar ou N para sair");
+            S = sc.next();
+            continuar = S.equalsIgnoreCase("S");
+        }
+            while (continuar);
+            sc.close();
+
+        }
+
 }
+
 
