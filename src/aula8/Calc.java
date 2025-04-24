@@ -63,38 +63,39 @@ public class Calc {
     public void VTCalc() {
         Scanner sc = new Scanner(System.in);
         double sal = salB;
+        String resposta;
 
         System.out.println("O funcionário tem direito a Vale Transporte? (S/N)");
-        String resposta = sc.next();
+        resposta = sc.next();
         while (true) {
-            if (resposta.equalsIgnoreCase("S") || resposta.equalsIgnoreCase("s")) {
-                VT = (sal * 0.6);
-                break;
-            } else if (resposta.equalsIgnoreCase("N") || resposta.equalsIgnoreCase("n")) {
-                VT = 0;
+            if (!resposta.equalsIgnoreCase("S") && !resposta.equalsIgnoreCase("N")) {
+                System.out.println("resposta invalida");
+            } else if (resposta.equalsIgnoreCase("S")) {
+                VT = (sal * 0.06);
                 break;
             } else {
-                System.out.println("resposta invalida");
+                VT = 0;
+                break;
             }
         }
     }
 
     public void VRCalc() {
         Scanner sc = new Scanner(System.in);
-        String resposta = sc.next();
+        String resposta;
 
         System.out.println("O funcionário tem direito a Vale Refeição? (S/N)");
         resposta = sc.next();
 
         while (true) {
-            if (resposta.equalsIgnoreCase("S") || resposta.equalsIgnoreCase("s")) {
+            if (!resposta.equalsIgnoreCase("S") && !resposta.equalsIgnoreCase("N")) {
+                System.out.println("resposta invalida");
+            } else if (resposta.equalsIgnoreCase("S")) {
                 VR = 250;
                 break;
-            } else if (resposta.equalsIgnoreCase("N") || resposta.equalsIgnoreCase("n")) {
+            } else {
                 VR = 0;
                 break;
-            } else {
-                System.out.println("resposta invalida");
             }
         }
 
@@ -102,27 +103,27 @@ public class Calc {
 
     public void VACalc() {
         Scanner sc = new Scanner(System.in);
-        String resposta = sc.next();
+        String resposta;
 
         System.out.println("O funcionário tem direito a Vale Alimentação? (S/N)");
         resposta = sc.next();
 
         while (true) {
-            if (resposta.equalsIgnoreCase("S") || resposta.equalsIgnoreCase("s")) {
+            if (!resposta.equalsIgnoreCase("S") && !resposta.equalsIgnoreCase("N")) {
+                System.out.println("resposta invalida");
+            } else if (resposta.equalsIgnoreCase("S")) {
                 VA = 200;
                 break;
-            } else if (resposta.equalsIgnoreCase("N") || resposta.equalsIgnoreCase("n")) {
+            } else {
                 VA = 0;
                 break;
-            } else {
-                System.out.println("resposta invalida");
             }
         }
     }
 
     public void PSCalc() {
         Scanner sc = new Scanner(System.in);
-        String resposta = sc.next();
+        String resposta;
 
         System.out.println("O funcionário tem direito a Plano de saúde? (S/N)");
         resposta = sc.next();
@@ -132,10 +133,10 @@ public class Calc {
                 System.out.println("O funcionário tem direito ao plano completo? (S/N)");
                 resposta = sc.next();
                 if (resposta.equalsIgnoreCase("S") || resposta.equalsIgnoreCase("s")) {
-                    PS = 150;
+                    PS = 300;
                     break;
                 } else if (resposta.equalsIgnoreCase("N") || resposta.equalsIgnoreCase("n")) {
-                    PS = 300;
+                    PS = 150;
                     break;
                 } else {
                     System.out.println("resposta invalida");
