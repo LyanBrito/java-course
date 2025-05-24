@@ -3,10 +3,9 @@ package aula9;
 import java.util.Scanner;
 
 public class CofrinhoSimulator {
-    public static double TipoMoeda() {
-        Scanner sc = new Scanner(System.in);
+    public static double TipoMoeda(Scanner sc) {
         int opcao;
-        double moeda = 0;
+        double valorMoeda = 0;
 
         System.out.println("Digite o tipo da moeda: ");
         System.out.println("""
@@ -16,68 +15,92 @@ public class CofrinhoSimulator {
                 4 - 0,25
                 5 - 0,50
                 6 - 1,00""");
-        do {
-            opcao = sc.nextInt();
-            if (opcao >= 1 && opcao <= 6) {
-                moeda = switch (opcao) {
-                    case 1 -> 0.01;
-                    case 2 -> 0.05;
-                    case 3 -> 0.1;
-                    case 4 -> 0.25;
-                    case 5 -> 0.5;
-                    case 6 -> 1;
-                    default -> moeda;
-                };
-                break;
-            } else {
-                System.out.println("Opção invalida!");
+
+        while (true) {
+            System.out.print("Opção: ");
+            if (!sc.hasNextInt()) {
+                System.out.println("Entrada inválida. Digite um número de 1 a 6.");
+                sc.next();
+                continue;
             }
-        } while (true);
-
-        return moeda;
+            opcao = sc.nextInt();
+            switch (opcao) {
+                case 1 -> valorMoeda = 0.01;
+                case 2 -> valorMoeda = 0.05;
+                case 3 -> valorMoeda = 0.10;
+                case 4 -> valorMoeda = 0.25;
+                case 5 -> valorMoeda = 0.50;
+                case 6 -> valorMoeda = 1.00;
+                default -> {
+                    System.out.println("Opção inválida. Tente novamente.");
+                    continue;
+                }
+            }
+            break;
+        }
+        return valorMoeda;
     }
-    public static double Quantida(double moeda, double valor) {
 
-        int quant;
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("Digite o quantidade de moeda: ");
-        quant = sc.nextInt();
-
-        valor = moeda * quant;
-        return valor;
+    public static int Quantidade(Scanner sc) {
+        int quantidade;
+        while (true) {
+            System.out.print("Digite a quantidade de moedas: ");
+            if (!sc.hasNextInt()) {
+                System.out.println("Entrada inválida. Digite um número inteiro.");
+                sc.next();
+                continue;
+            }
+            quantidade = sc.nextInt();
+            if (quantidade <= 0) {
+                System.out.println("Quantidade não pode ser negativa ou nula. Tente novamente.");
+            } else {
+                break;
+            }
+        }
+        return quantidade;
     }
-    public static double Total(double moeda, double valor) {
-        return moeda * valor;
-    }
-    public static double Semanas(double moeda) {
-        int semana = 0;
 
-        return semana;
+    public static int calcularSemanas(double total, double valor) {
+        if (total >= 100) {
+            return 0;
+        }
+        double restante = 100.0 - total;
+        int semanas = (int) (restante / valor);
+
+        if (semanas * valor < restante) {
+            semanas++;
+        }
+        return semanas;
     }
+
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        double total = 0;
         String opcao;
 
-        System.out.println("bem vindo ao cofrinho ingteligente!");
-        double moeda = TipoMoeda();
-        double valor = Quantida(moeda, 0);
-        double total = Total(moeda, valor);
+        System.out.println("Bem-vindo ao Cofrinho Inteligente!");
 
         do {
-            System.out.println("Deseja adicionar mais moedas? (S/N)");
+            double moeda = TipoMoeda(sc);
+            int quantidade = Quantidade(sc);
+            double valorInserido = moeda * quantidade;
+            total += valorInserido;
+            System.out.printf("Você inseriu R$ %.2f neste lote.%n", valorInserido);
+            sc.nextLine();
+
+            System.out.print("Deseja adicionar mais moedas? (S/N): ");
             opcao = sc.nextLine();
-            if (opcao.equalsIgnoreCase("s") || opcao.equalsIgnoreCase("sim")) {
-                moeda = TipoMoeda();
-                valor = Quantida(moeda, total);
-                total += Total(moeda, valor);
-            } else {
-                break;
-            }
+        } while (opcao.equalsIgnoreCase("S") || opcao.equalsIgnoreCase("Sim"));
 
-        } while (true);
+        System.out.printf("Total acumulado no cofrinho: R$ %.2f%n", total);
 
-        System.out.println(total);
+        int semanas = calcularSemanas(total, total);
+        if (semanas == 0) {
+            System.out.println("Você já atingiu ou ultrapassou R$ 100,00!");
+        } else {
+            System.out.printf("\nFaltam %d semanas para chegar a R$ 100,00.%n", semanas);
+        }
+        sc.close();
     }
 }
