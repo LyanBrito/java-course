@@ -1,4 +1,5 @@
 package aula7;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -15,10 +16,5 @@ public class Arr {
             i++;
         }
         System.out.println("Valores: " + Arrays.toString(arr));
-//        System.out.println("Valores: ");
-//        for (i = 0; i < 5; i++) {
-//            System.out.print("[" + arr[i] + "]");
-//
-//        }
     }
 }
