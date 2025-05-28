@@ -3,8 +3,8 @@ package aula9;
 import java.util.Scanner;
 
 public class ValidadorSenha {
-    public static Boolean ValidaNum(String senha) {
-        Boolean valida = false;
+    public static boolean ValidaNum(String senha) {
+        boolean valida = false;
         for (int i = 0; i < senha.length(); i++) {
             char ch = senha.charAt(i);
             if (ch == '2' || ch == '3' || ch == '5' || ch == '7') {
@@ -14,8 +14,8 @@ public class ValidadorSenha {
         }
         return valida;
     }
-    public static Boolean ValidaMai(String senha) {
-        Boolean valida = false;
+    public static boolean ValidaMai(String senha) {
+        boolean valida = false;
         for (int i = 0; i < senha.length(); i++) {
             char ch = senha.charAt(i);
             if (Character.isUpperCase(ch)) {
@@ -25,8 +25,8 @@ public class ValidadorSenha {
         }
         return valida;
     }
-    public static Boolean ValidaCar(String senha) {
-        Boolean valida = false;
+    public static boolean ValidaCar(String senha) {
+        boolean valida = false;
         String car = "/?:;.,><]}[{~^´`=+-_)(*&¨%$#@!|";
         for (int i = 0; i < senha.length(); i++) {
             char ch = senha.charAt(i);
@@ -37,8 +37,8 @@ public class ValidadorSenha {
         }
         return valida;
     }
-    public static Boolean ValidaDupli(String senha) {
-        Boolean valida = false;
+    public static boolean ValidaDupli(String senha) {
+        boolean valida = false;
 
         String vogais = "aAeEiIoOuU";
         for (int i = 0; i < senha.length() -1; i++) {
@@ -56,7 +56,7 @@ public class ValidadorSenha {
     }
 
     public static void main(String[] args) {
-        Boolean valida = false;
+        boolean valida = false;
         Scanner sc = new Scanner(System.in);
         System.out.println("Digite sua senha: ");
         String senha = sc.nextLine();
