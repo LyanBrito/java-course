@@ -25,29 +25,27 @@ public class Feitissaria {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        package aula9;
 
-public class Feiticos {
-    public static String[] feiticos = {
-        "Accio", "Alohomora", "Anapneo", "Aranea Exumai", "Aresto Momentum", "Avada Kedavra", "Braquium Remendo", "Cara-de-Lesma",
-        "Colloportus", "Confringo", "Confundus", "Crucio", "Descendo", "Densaugeo", "Diffindo", "Ebublio", "Episkey", "Estupefaça",
-        "Estupore", "Expecto Patronum", "Expelliarmus", "Finite Incatatem", "Flipendo", "Furnunculus", "Germinio", "Glacius",
-        "Homenum Revelio", "Homorfo", "Immobilus", "Impedimenta", "Imperio", "Incendio", "Langlock", "Levicorpus", "Liberacorpus",
-        "Locomotor", "Locomotor Mortis", "Lumos", "Lumos Solem", "Lumos Máxima", "Mobiliarbus", "Mobilicorpus", "Morsmorde", "Nox",
-        "Obliviate", "Oppugno", "Pack", "Piertotum Locomotor", "Pericullum", "Petrificus Totalus", "Piertotum Locomotor", "Portus",
-        "Prior Incantato", "Protego", "Protego Totalum", "Protego Horribilis", "Reducio", "Reducto", "Reparo", "Repello Trouxatum",
-        "Rictumsempra", "Ridikkullus", "Sectumsempra", "Serpensortia", "Silêncio", "Sonorus", "Tarantallegra", "Vipera Evanesca",
-        "Vulnerar Sanentur", "Wingardium Leviosa"
-    };
-}
+        String[] feiticos = {
+                "Accio", "Alohomora", "Anapneo", "Aranea Exumai", "Aresto Momentum", "Avada Kedavra", "Braquium Remendo", "Cara-de-Lesma",
+                "Colloportus", "Confringo", "Confundus", "Crucio", "Descendo", "Densaugeo", "Diffindo", "Ebublio", "Episkey", "Estupefaça",
+                "Estupore", "Expecto Patronum", "Expelliarmus", "Finite Incatatem", "Flipendo", "Furnunculus", "Germinio", "Glacius",
+                "Homenum Revelio", "Homorfo", "Immobilus", "Impedimenta", "Imperio", "Incendio", "Langlock", "Levicorpus", "Liberacorpus",
+                "Locomotor", "Locomotor Mortis", "Lumos", "Lumos Solem", "Lumos Máxima", "Mobiliarbus", "Mobilicorpus", "Morsmorde", "Nox",
+                "Obliviate", "Oppugno", "Pack", "Piertotum Locomotor", "Pericullum", "Petrificus Totalus", "Piertotum Locomotor", "Portus",
+                "Prior Incantato", "Protego", "Protego Totalum", "Protego Horribilis", "Reducio", "Reducto", "Reparo", "Repello Trouxatum",
+                "Rictumsempra", "Ridikkullus", "Sectumsempra", "Serpensortia", "Silêncio", "Sonorus", "Tarantallegra", "Vipera Evanesca",
+                "Vulnerar Sanentur", "Wingardium Leviosa"
+        };
+
 
         System.out.println("Digite o feitiço a ser encontrado:");
         String posicao = sc.nextLine();
 
-        int posicao = buscaBinaria(feiticos, posicao);
+        int alvo = buscaBinaria(feiticos, posicao);
 
-        if (posicao >= 0) {
-            System.out.println("Feitiço encontrado na posição " + posicao);
+        if (alvo >= 0) {
+            System.out.println("Feitiço encontrado na posição " + alvo);
         } else {
             System.out.println("Feitiço não encontrado.");
         }
