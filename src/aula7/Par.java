@@ -9,8 +9,11 @@ public class Par {
         int[] arr = new int[15];
         int i = 0;
         int[] newArr = randMeth.getRandom(i, arr, rand);
-        System.out.println(Arrays.toString(newArr));
 
-        
+        for (int j = 0; j < newArr.length; j++) {
+          if (newArr[j] % 2 == 0) {
+              System.out.println(newArr[j] + " ");
+          }
+        }
     }
 }
